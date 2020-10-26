@@ -1,0 +1,201 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/font/Montserrat-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/JSONParser.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/typewriter-space-bar-1.wav" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "typewriter"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
+[node name="Dialogue" type="Control"]
+margin_right = 1880.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 0, 380 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 20.0
+margin_right = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+self_modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+margin_right = 1830.0
+margin_bottom = 335.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/MarginContainer"]
+margin_right = 1780.0
+margin_bottom = 294.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+pause_mode = 2
+margin_right = 1780.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 240 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Next to the hooded elder stands a man dressed in an armored dark red robe.The crimson robe is reinforced with light plate in several key areas. A sizeable, yet nimble, breastplate is attached to his front and back torso. His shoulders are protected by layered pieces of metal. There doesn’t appear to be any armor from his waist-down, with movement prioritized over raw protection. Two short swords hang on his back. Brother Samuel stands near the two. He notices your stare, and gives a friendly wink."
+autowrap = true
+clip_text = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/Label"]
+anims/typewriter = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/Label"]
+stream = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+margin_top = 244.0
+margin_right = 1780.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="Option1" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 439.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 0, 0, 1 )
+
+[node name="Option1_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+disabled = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option2" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 447.0
+margin_right = 886.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 1, 1, 1 )
+
+[node name="Option2_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+disabled = true
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option3" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 894.0
+margin_right = 1333.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 1, 0, 1 )
+
+[node name="Option3_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+disabled = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option4" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 1341.0
+margin_right = 1780.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 1, 0, 1 )
+
+[node name="ContinueBtn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option4"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SPACEBAR TO CONTINUE"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JSONParser" type="Node" parent="."]
+script = ExtResource( 2 )
+file_name = "chapter-one.json"
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option1/Option1_Btn" to="." method="_on_Option1_Btn_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option2/Option2_Btn" to="." method="_on_Option2_Btn_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option3/Option3_Btn" to="." method="_on_Option3_Btn_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option4/ContinueBtn" to="." method="_on_ContinueBtn_pressed"]
