@@ -52,6 +52,10 @@ func _change_dialogue(index: int):
 			_option1_btn.disabled = true
 			_option2_btn.disabled = true
 			_option3_btn.disabled = true
+			_continue_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option1_btn.get_parent().get_node("AnimationPlayer").stop()
+			_option2_btn.get_parent().get_node("AnimationPlayer").stop()
+			_option3_btn.get_parent().get_node("AnimationPlayer").stop()
 		2:
 			_option1_btn.text = _passages[index].links[0].text
 			_option2_btn.text = _passages[index].links[1].text
@@ -60,6 +64,10 @@ func _change_dialogue(index: int):
 			_option1_btn.disabled = false
 			_option2_btn.disabled = false
 			_option3_btn.disabled = true
+			_continue_btn.get_parent().get_node("AnimationPlayer").stop()
+			_option1_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option2_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option3_btn.get_parent().get_node("AnimationPlayer").stop()
 		3:
 			_option1_btn.text = _passages[index].links[0].text
 			_option2_btn.text = _passages[index].links[1].text
@@ -68,6 +76,10 @@ func _change_dialogue(index: int):
 			_option1_btn.disabled = false
 			_option2_btn.disabled = false
 			_option3_btn.disabled = false
+			_continue_btn.get_parent().get_node("AnimationPlayer").stop()
+			_option1_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option2_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option3_btn.get_parent().get_node("AnimationPlayer").play("enabled")
 		4:
 			_option1_btn.text = _passages[index].links[0].text
 			_option2_btn.text = _passages[index].links[1].text
@@ -77,12 +89,16 @@ func _change_dialogue(index: int):
 			_option1_btn.disabled = false
 			_option2_btn.disabled = false
 			_option3_btn.disabled = false
+			_continue_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option1_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option2_btn.get_parent().get_node("AnimationPlayer").play("enabled")
+			_option3_btn.get_parent().get_node("AnimationPlayer").play("enabled")
 			
 	_current_passages_index = index
 
 func _on_Option1_Btn_pressed():
 	var current_passage: Passage = _passages[_current_passages_index]
-	var next_passage_pid: int = current_passage.links[1].pid
+	var next_passage_pid: int = current_passage.links[0].pid
 	var index: int = 0
 	
 	for psg in _passages:
@@ -93,7 +109,7 @@ func _on_Option1_Btn_pressed():
 
 func _on_Option2_Btn_pressed():
 	var current_passage: Passage = _passages[_current_passages_index]
-	var next_passage_pid: int = current_passage.links[2].pid
+	var next_passage_pid: int = current_passage.links[1].pid
 	var index: int = 0
 	
 	for psg in _passages:
@@ -104,7 +120,7 @@ func _on_Option2_Btn_pressed():
 
 func _on_Option3_Btn_pressed():
 	var current_passage: Passage = _passages[_current_passages_index]
-	var next_passage_pid: int = current_passage.links[3].pid
+	var next_passage_pid: int = current_passage.links[2].pid
 	var index: int = 0
 	
 	for psg in _passages:

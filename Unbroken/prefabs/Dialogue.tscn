@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/font/Montserrat-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/JSONParser.gd" type="Script" id=2]
@@ -9,7 +9,7 @@
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "typewriter"
 length = 10.0
 tracks/0/type = "value"
@@ -25,9 +25,121 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "enabled"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 25 ), Vector2( 220, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "enabled"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 25 ), Vector2( 220, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "enabled"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 25 ), Vector2( 220, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "enabled"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 25 ), Vector2( 220, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
 
 [node name="Dialogue" type="Control"]
 margin_right = 1880.0
@@ -98,10 +210,11 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/Label"]
-anims/typewriter = SubResource( 3 )
+anims/typewriter = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/Label"]
 stream = ExtResource( 4 )
+volume_db = -15.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 244.0
@@ -109,11 +222,12 @@ margin_right = 1780.0
 margin_bottom = 294.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-custom_constants/separation = 8
+custom_constants/separation = 48
 
 [node name="Option1" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 439.0
+margin_right = 409.0
 margin_bottom = 50.0
+rect_pivot_offset = Vector2( 220, 25 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 1, 0, 0, 1 )
@@ -121,7 +235,8 @@ color = Color( 1, 0, 0, 1 )
 [node name="Option1_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+rect_pivot_offset = Vector2( 220, 25 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 disabled = true
@@ -130,10 +245,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option1"]
+anims/enabled = SubResource( 4 )
+
 [node name="Option2" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 447.0
-margin_right = 886.0
+margin_left = 457.0
+margin_right = 866.0
 margin_bottom = 50.0
+rect_pivot_offset = Vector2( 220, 25 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 1, 1, 1 )
@@ -141,7 +260,7 @@ color = Color( 0, 1, 1, 1 )
 [node name="Option2_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 disabled = true
@@ -151,10 +270,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option2"]
+anims/enabled = SubResource( 5 )
+
 [node name="Option3" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 894.0
-margin_right = 1333.0
+margin_left = 914.0
+margin_right = 1323.0
 margin_bottom = 50.0
+rect_pivot_offset = Vector2( 220, 25 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 1, 0, 1 )
@@ -162,7 +285,7 @@ color = Color( 0, 1, 0, 1 )
 [node name="Option3_Btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 disabled = true
@@ -171,10 +294,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option3"]
+anims/enabled = SubResource( 6 )
+
 [node name="Option4" type="ColorRect" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 1341.0
+margin_left = 1371.0
 margin_right = 1780.0
 margin_bottom = 50.0
+rect_pivot_offset = Vector2( 220, 25 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 1, 1, 0, 1 )
@@ -183,7 +310,7 @@ color = Color( 1, 1, 0, 1 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "SPACEBAR TO CONTINUE"
@@ -191,6 +318,9 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Option4"]
+anims/enabled = SubResource( 7 )
 
 [node name="JSONParser" type="Node" parent="."]
 script = ExtResource( 2 )
